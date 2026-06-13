@@ -1,39 +1,24 @@
-FROM node:22-alpine AS builder
-
-WORKDIR /app
-
-# Copiar archivos de package
-COPY package.json ./
-COPY package*.json ./
-COPY apps/backend/package.json ./apps/backend/
-COPY packages/shared-types/package.json ./packages/shared-types/
-
-# Instalar todas las dependencias
-RUN npm install --legacy-peer-deps
-
-# Copiar código
-COPY apps/backend ./apps/backend
-COPY packages/shared-types ./packages/shared-types
-
-# Build del backend
-RUN npm run build -w apps/backend
-
-# Stage de producción
 FROM node:22-alpine
 
 WORKDIR /app
 
-# Copiar solo node_modules y archivos compilados
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/apps/backend/dist ./apps/backend/dist
-COPY --from=builder /app/apps/backend/node_modules ./apps/backend/node_modules
-COPY package.json ./
+# Copiar raíz
+COPY package.json package-lock.json ./
 
-# Exponer puerto
+# Copiar backend y tipos compartidos
+COPY apps/backend ./apps/backend
+COPY packages/shared-types ./packages/shared-types
+
+# Instalar dependencias globales
+RUN npm install --legacy-peer-deps
+
+# Build backend directamente
+RUN cd apps/backend && npm install --legacy-peer-deps && npm run build
+
+# Cleanup para reducir tamaño
+RUN rm -rf apps/backend/node_modules apps/backend/src node_modules/.cache
+
 EXPOSE 3001
-
-# Environment
 ENV NODE_ENV=production
 
-# Start
 CMD ["node", "apps/backend/dist/main.js"]
