@@ -1,4 +1,4 @@
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ COPY packages/shared-types ./packages/shared-types
 RUN npm run build -w apps/backend
 
 # Stage de producción
-FROM node:20-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
