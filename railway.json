@@ -1,0 +1,12 @@
+{
+  "build": {
+    "builder": "dockerfile",
+    "dockerfile": "Dockerfile"
+  },
+  "deploy": {
+    "numReplicas": 1,
+    "startCommand": "node apps/backend/dist/main.js",
+    "restartPolicyMaxRetries": 10,
+    "restartPolicyWindowSeconds": 60
+  }
+}
