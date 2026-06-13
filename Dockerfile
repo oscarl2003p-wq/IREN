@@ -3,12 +3,13 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copiar archivos de package
-COPY package.json package-lock.json ./
+COPY package.json ./
+COPY package*.json ./
 COPY apps/backend/package.json ./apps/backend/
 COPY packages/shared-types/package.json ./packages/shared-types/
 
 # Instalar todas las dependencias
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copiar código
 COPY apps/backend ./apps/backend
