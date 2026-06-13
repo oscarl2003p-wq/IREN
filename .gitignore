@@ -36,3 +36,4 @@ pnpm-lock.yaml
 # Logs
 logs/
 *.log
+.vercel
