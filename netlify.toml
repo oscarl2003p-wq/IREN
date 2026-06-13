@@ -1,0 +1,27 @@
+[build]
+  command = "npm run build -w apps/frontend"
+  functions = "apps/frontend/.netlify/functions"
+  publish = "apps/frontend/.next"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  NEXT_PUBLIC_API_URL = "https://your-backend-url.com"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_API_URL = "https://your-backend-preview.com"
+
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_API_URL = "https://your-backend-staging.com"
