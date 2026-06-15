@@ -1,0 +1,31 @@
+https://desafio-iren.vercel.app
+https://desafio-iren.vercel.app/receptionist/login
+https://desafio-iren.vercel.app/doctor/login
+USUARIOS Y CONTRASEÑAS DEMO 
+RECORDAR QUE LA VERIFICACION POR ROSTRO AUN ESTA EN ETAPA DE PRUEBA, PUEDE HABER ERRORES
+
+Doctor(a)	Especialidad	DNI	Contraseña
+Dra. Rosa Quispe	Oncología Ginecológica	12345678	password123
+Dr. Carlos Mendoza	Radioterapia	87654321	password123
+Dr. Luis Perez	Cardiología	44556677	password123
+Dra. Patricia Huanca	Anatomía Patológica	55667788	password123
+Dr. Jorge Salinas	Patología Clínica	66778899	password123
+Dr. Miguel Ríos	Centro Quirúrgico	77889900	password123
+Dra. Carmen Vargas	Hospitalización Oncológica	88990011	password123
+Dr. Fernando Castro	Cirugía Oncológica	99001122	password123
+💻 Recepción y Administración
+
+Usuario	Rol	DNI	Contraseña
+Administrador IREN	Admin	00000000	admin
+Recepcionista Principal	Recepción	11111111	admin
+👤 Pacientes
+(Los pacientes inician sesión con un PIN de 4 dígitos en lugar de una contraseña larga).
+
+Paciente	DNI	PIN de Acceso
+Oscar Daniel Lujan Perez 72254544 1234
+Roberto Gomez	78451236	1234
+Maria Lopez	45678912	1234
+Ana Torres	33445566	1234
+NOTE
+
+Recuerda que si el paciente hace clic en "¿Es tu primera vez aquí? Regístrate" en la pantalla de inicio, puede crear una cuenta nueva. Podrás usar el DNI y el PIN que registres en ese formulario para entrar, y aparecerá automáticamente conectado al sistema si luego le agendas una cita desde recepción.
